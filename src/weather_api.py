@@ -6,7 +6,7 @@ from datetime import date
 # GET COORDINATES
 # =========================================
 
-def get_coordinates(location, country_code="IN"):
+def get_coordinates(location, country_code="IN", state=None):
 
     location = location.strip()
 
@@ -40,6 +40,32 @@ def get_coordinates(location, country_code="IN"):
             print(f"  - {r.get('name')}, {r.get('admin1')}, {r.get('country')} ({r.get('country_code')})")
         return None, None
 
+    # If state is provided (e.g. from Streamlit), filter silently
+    if state:
+        state_matched = [
+            r for r in matched
+            if r.get("admin1", "").lower() == state.strip().lower()
+        ]
+        if state_matched:
+            matched = state_matched
+
+    # If still ambiguous and running interactively, prompt user
+    else:
+        unique_states = list(dict.fromkeys(r.get("admin1", "Unknown") for r in matched))
+
+        if len(unique_states) > 1:
+            print(f"\nMultiple cities named '{location}' found in different states:")
+            for i, s in enumerate(unique_states, start=1):
+                print(f"  {i}. {s}")
+
+            while True:
+                choice = input("Enter the number of your state: ").strip()
+                if choice.isdigit() and 1 <= int(choice) <= len(unique_states):
+                    selected_state = unique_states[int(choice) - 1]
+                    matched = [r for r in matched if r.get("admin1") == selected_state]
+                    break
+                print(f"Invalid choice. Please enter a number between 1 and {len(unique_states)}.")
+
     result = matched[0]
     latitude  = result["latitude"]
     longitude = result["longitude"]
@@ -53,9 +79,9 @@ def get_coordinates(location, country_code="IN"):
 # GET LIVE WEATHER
 # =========================================
 
-def get_weather_data(location, country_code="IN"):
+def get_weather_data(location, country_code="IN", state=None):
 
-    latitude, longitude = get_coordinates(location, country_code)
+    latitude, longitude = get_coordinates(location, country_code, state)
 
     if latitude is None:
         return None

@@ -1,19 +1,26 @@
 # ==============================
 # PREDICTION SCRIPT
 # ==============================
-
+import os
 import pickle
 import numpy as np
 
+# ==============================
+# Dynamic Paths
+# ==============================
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+model_path = os.path.join(BASE_DIR, "models", "trained_model.pkl")
+scaler_path = os.path.join(BASE_DIR, "models", "scaler.pkl")
 
 # ==============================
 # LOAD MODEL & SCALER
 # ==============================
 
-with open("Rain-Prediction-ML/models/trained_model.pkl", "rb") as f:
+with open(model_path, "rb") as f:
     model = pickle.load(f)
 
-with open("Rain-Prediction-ML/models/scaler.pkl", "rb") as f:
+with open(scaler_path, "rb") as f:
     scaler = pickle.load(f)
 
 
