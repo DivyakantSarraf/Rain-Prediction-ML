@@ -19,7 +19,7 @@ The project was developed as part of the **Applied Machine Learning** course.
 
 # 🚀 Features
 
-## ✅ Machine Learning Models
+##  Machine Learning Models
 
 * Logistic Regression
 * K-Nearest Neighbors (KNN)
@@ -29,7 +29,7 @@ The project was developed as part of the **Applied Machine Learning** course.
 
 ---
 
-## ✅ Data Processing
+##  Data Processing
 
 * Missing value handling
 * Feature selection
@@ -38,7 +38,7 @@ The project was developed as part of the **Applied Machine Learning** course.
 
 ---
 
-## ✅ Exploratory Data Analysis (EDA)
+##  Exploratory Data Analysis (EDA)
 
 * Correlation Heatmaps
 * Boxplots
@@ -47,7 +47,7 @@ The project was developed as part of the **Applied Machine Learning** course.
 
 ---
 
-## ✅ Advanced ML Concepts
+##  Advanced ML Concepts
 
 * PCA (Principal Component Analysis)
 * K-Means Clustering
@@ -55,7 +55,7 @@ The project was developed as part of the **Applied Machine Learning** course.
 
 ---
 
-## ✅ Real-Time Weather Prediction
+##  Real-Time Weather Prediction
 
 * Fetches live weather data using Open-Meteo API
 * City-based weather prediction
@@ -210,20 +210,6 @@ Random Forest performed best overall because:
 * Better feature engineering
 * Hyperparameter tuning
 * Forecast prediction for multiple days
-
----
-
-# 🎤 Viva Concepts Covered
-
-* Supervised Learning
-* Unsupervised Learning
-* Classification
-* Clustering
-* PCA
-* Data preprocessing
-* Feature scaling
-* API integration
-* Model evaluation metrics
 
 ---
 
